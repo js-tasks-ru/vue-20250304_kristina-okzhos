@@ -60,7 +60,7 @@ export default defineComponent({
   template: `
     <div class="counter">
       <UiButton aria-label="Decrement" :disabled="disabledDecrement" @click="countDecrement()">➖</UiButton>
-      <span class="count" data-testid="count">{{count}}</span>
+      <span class="count" data-testid="count">{{ count }}</span>
       <UiButton aria-label="Increment" :disabled="disabledIncrement" @click="countIncrement()">➕</UiButton>
     </div>
   `,

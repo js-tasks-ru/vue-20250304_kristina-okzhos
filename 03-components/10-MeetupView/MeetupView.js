@@ -32,7 +32,7 @@ export default defineComponent({
       <UiContainer>
         <div class="meetup">
           <div class="meetup__content">
-            <h2>{{meetup.title}}</h2>
+            <h2>{{ meetup.title }}</h2>
             <MeetupCover 
               :title="meetup.title"
               :image="meetup.image"

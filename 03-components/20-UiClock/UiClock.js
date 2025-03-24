@@ -21,5 +21,5 @@ export default defineComponent({
     return { time }
   },
 
-  template: `<div class="clock">{{time}}</div>`,
+  template: `<div class="clock">{{ time }}</div>`,
 })
