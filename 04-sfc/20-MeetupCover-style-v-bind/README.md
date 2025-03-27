@@ -15,7 +15,8 @@
 Требуется изменить реализацию компонента `MeetupCover` так, чтобы фон задавался через `v-bind` в стилях, а не
 вычислялись и привязывались вручную стили с CSS переменной.
 
-Документация: [https://vuejs.org/api/sfc-css-features.html#v-bind-in-css](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)
+Документация:
+[https://vuejs.org/api/sfc-css-features.html#v-bind-in-css](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)
 
 ### Результат
 
@@ -30,6 +31,7 @@
 📝 Для решения задачи отредактируйте файл: `MeetupCover.vue`.
 
 🚀 Команда запуска для ручного тестирования: `npm run dev`\
-Приложение будет доступно на [http://localhost:5173/04-sfc/20-MeetupCover-style-v-bind/](http://localhost:5173/04-sfc/20-MeetupCover-style-v-bind/).
+Приложение будет доступно на
+[http://localhost:5173/04-sfc/20-MeetupCover-style-v-bind/](http://localhost:5173/04-sfc/20-MeetupCover-style-v-bind/).
 
 ✅ Доступно автоматическое тестирование: `npm test MeetupCover-style-v-bind`
