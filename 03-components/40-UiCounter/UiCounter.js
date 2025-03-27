@@ -30,11 +30,11 @@ export default defineComponent({
   },
 
   emits: ['update:count'],
-  setup(props) {
+  setup(props, emit) {
     // Рекомендуется для практики реализовать обработку событий внутри setup, а не непосредственно в шаблоне
 
     function countDecrement() {
-      this.$emit('update:count', props.count - 1)
+      emit('update:count', props.count - 1)
     }
 
     const disabledDecrement = computed(() => {
@@ -42,7 +42,7 @@ export default defineComponent({
     })
 
     function countIncrement() {
-      this.$emit('update:count', props.count + 1)
+      emit('update:count', props.count + 1)
     }
 
     const disabledIncrement = computed(() => {

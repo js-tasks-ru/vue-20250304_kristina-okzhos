@@ -40,10 +40,8 @@ export default defineComponent({
           class="weather-card"
         >
           <WeatherAlert v-if = "weather.alert">
-            <template #alert>
               <span class="weather-alert__icon">⚠️</span>
               <span class="weather-alert__description">{{weather.alert.sender_name}}: {{weather.alert.description}}</span>
-            </template>
           </WeatherAlert>
 
           <div>

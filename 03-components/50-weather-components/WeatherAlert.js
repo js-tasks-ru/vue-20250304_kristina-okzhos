@@ -11,7 +11,7 @@ export default defineComponent({
 
   template: `
     <div class="weather-alert">
-      <slot name="alert">{{ text }}</slot>
+      <slot>{{ text }}</slot>
     </div>
   `,
 })
