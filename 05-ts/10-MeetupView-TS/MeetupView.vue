@@ -1,18 +1,16 @@
-<script setup>
-// import type { MeetupDTO } from '@shgk/vue-course-ui'
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import type { PropType } from 'vue'
+import type { MeetupDTO } from '@shgk/vue-course-ui'
 import { UiAlert, UiContainer } from '@shgk/vue-course-ui'
 import MeetupAgenda from './MeetupAgenda.vue'
 import MeetupDescription from './MeetupDescription.vue'
 import MeetupCover from './MeetupCover.vue'
 import MeetupInfo from './MeetupInfo.vue'
 
-defineProps({
-  meetup: {
-    // Настоящий тип - MeetupDTO
-    type: Object,
-    required: true,
-  },
-})
+const { meetup } = defineProps<{
+  meetup: PropType<MeetupDTO>
+}>()
 </script>
 
 <template>
@@ -21,7 +19,8 @@ defineProps({
     <UiContainer>
       <div class="meetup">
         <div class="meetup__content">
-          <h2>Описание</h2>
+          <h2>{{ meetup.title }}</h2>
+          <MeetupCover :title="meetup.title" :image="meetup.image" />
           <MeetupDescription :description="meetup.description" />
           <h2>Программа</h2>
           <MeetupAgenda v-if="meetup.agenda.length" :agenda="meetup.agenda" />

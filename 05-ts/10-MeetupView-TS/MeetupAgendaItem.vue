@@ -1,15 +1,20 @@
-<script setup>
-// import type { MeetupAgendaItemDTO } from '@shgk/vue-course-ui'
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import type { PropType } from 'vue'
+import type { MeetupAgendaItemDTO } from '@shgk/vue-course-ui'
 import { computed } from 'vue'
 import { UiIcon } from '@shgk/vue-course-ui'
 
-const props = defineProps({
+/* const props = defineProps({
   agendaItem: {
     // Настоящий тип - MeetupAgendaItemDTO
-    type: Object,
+    type: Object as PropType<MeetupAgendaItemDTO>,
     required: true,
   },
-})
+}) */
+const { agendaItem } = defineProps<{
+  agendaItem: PropType<MeetupAgendaItemDTO>
+}>()
 
 const agendaItemDefaultTitles = {
   registration: 'Регистрация',
@@ -20,7 +25,7 @@ const agendaItemDefaultTitles = {
   afterparty: 'Afterparty',
   talk: 'Доклад',
   other: 'Другое',
-}
+} as const
 
 // ⚠️ Чтобы TS понимал, что этот объект - константа, и других значений здесь не будет - потребуется добавить `as const`
 // В противном случае TS не позволит передать значения этих полей в `icon` с ошибкой
@@ -34,10 +39,10 @@ const agendaItemIcons = {
   closing: 'key',
   afterparty: 'cal-sm',
   other: 'cal-sm',
-} // as const
+} as const
 
-const icon = computed(() => agendaItemIcons[props.agendaItem.type])
-const title = computed(() => agendaItemDefaultTitles[props.agendaItem.type])
+const icon = computed(() => agendaItemIcons[agendaItem.type])
+const title = computed(() => agendaItemDefaultTitles[agendaItem.type])
 </script>
 
 <template>

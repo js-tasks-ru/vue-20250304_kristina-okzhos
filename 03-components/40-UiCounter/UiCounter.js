@@ -30,7 +30,7 @@ export default defineComponent({
   },
 
   emits: ['update:count'],
-  setup(props, {emit}) {
+  setup(props, { emit }) {
     // Рекомендуется для практики реализовать обработку событий внутри setup, а не непосредственно в шаблоне
 
     function countDecrement() {
