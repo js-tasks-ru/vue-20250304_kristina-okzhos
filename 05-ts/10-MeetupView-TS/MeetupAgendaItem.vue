@@ -1,17 +1,9 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, computed } from 'vue'
 import type { PropType } from 'vue'
 import type { MeetupAgendaItemDTO } from '@shgk/vue-course-ui'
-import { computed } from 'vue'
 import { UiIcon } from '@shgk/vue-course-ui'
 
-/* const props = defineProps({
-  agendaItem: {
-    // Настоящий тип - MeetupAgendaItemDTO
-    type: Object as PropType<MeetupAgendaItemDTO>,
-    required: true,
-  },
-}) */
 const { agendaItem } = defineProps<{
   agendaItem: PropType<MeetupAgendaItemDTO>
 }>()

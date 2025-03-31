@@ -1,13 +1,40 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { defineSlots, defineProps } from 'vue'
+import type { PropType, Slot } from 'vue'
+
+const { invalid = undefined } = defineProps<{
+  invalid?: PropType<string> //– Имеет ли поле невалидное состояние
+}>()
+
+defineSlots<{
+  /** Контент заголовка */
+  default?: Slot
+  /** Контент информации о пользователе */
+  label?: Slot<string>
+  description?: Slot<string>
+}>()
+</script>
 
 <template>
   <div class="form-group">
     <div class="form-group__label-wrapper">
-      <label for="FOR" class="form-group__label">LABEL</label>
-      <div class="form-group__description">DESCRIPTION</div>
+      <label :for="$attrs.for" class="form-group__label">
+        <slot name="label"> {{ $attrs.label }}</slot>
+      </label>
+      <div class="form-group__description">
+        <slot name="description">{{ $attrs.description }}</slot>
+      </div>
     </div>
-    <div class="form-group__control">CONTENT</div>
-    <div class="form-group__hint form-group__hint--invalid">HINT | ERROR</div>
+    <div class="form-group__control"><slot></slot></div>
+    <div
+      v-if="$attrs.hint || $attrs.showHint"
+      :class="{ 'form-group__hint--invalid': invalid }"
+      class="form-group__hint"
+    >
+      <template v-if="$attrs.hint && ($attrs.showHint || invalid)">
+        {{ $attrs.hint }}
+      </template>
+    </div>
   </div>
 </template>
 
