@@ -8,6 +8,13 @@ import MeetupDescription from './MeetupDescription.vue'
 import MeetupCover from './MeetupCover.vue'
 import MeetupInfo from './MeetupInfo.vue'
 
+// При таком описании не проходят тесты, но работает.
+/* 
+interface MeetupProps {
+  meetup: MeetupDTO,
+}
+const { meetup } = defineProps<MeetupProps>() 
+*/
 const { meetup } = defineProps<{
   meetup: PropType<MeetupDTO>
 }>()

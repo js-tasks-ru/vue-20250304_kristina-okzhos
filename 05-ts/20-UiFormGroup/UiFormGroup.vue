@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineSlots, defineProps } from 'vue'
+import { defineSlots, defineProps, useAttrs } from 'vue'
 import type { PropType, Slot } from 'vue'
 
 const { invalid = undefined } = defineProps<{
@@ -13,26 +13,24 @@ defineSlots<{
   label?: Slot<string>
   description?: Slot<string>
 }>()
+
+const attrs = useAttrs()
 </script>
 
 <template>
   <div class="form-group">
     <div class="form-group__label-wrapper">
-      <label :for="$attrs.for" class="form-group__label">
-        <slot name="label"> {{ $attrs.label }}</slot>
+      <label :for="attrs.for" class="form-group__label">
+        <slot name="label"> {{ attrs.label }}</slot>
       </label>
       <div class="form-group__description">
-        <slot name="description">{{ $attrs.description }}</slot>
+        <slot name="description">{{ attrs.description }}</slot>
       </div>
     </div>
     <div class="form-group__control"><slot></slot></div>
-    <div
-      v-if="$attrs.hint || $attrs.showHint"
-      :class="{ 'form-group__hint--invalid': invalid }"
-      class="form-group__hint"
-    >
-      <template v-if="$attrs.hint && ($attrs.showHint || invalid)">
-        {{ $attrs.hint }}
+    <div v-if="attrs.hint || attrs.showHint" :class="{ 'form-group__hint--invalid': invalid }" class="form-group__hint">
+      <template v-if="attrs.hint && (attrs.showHint || invalid)">
+        {{ attrs.hint }}
       </template>
     </div>
   </div>

@@ -1,9 +1,36 @@
-<script setup lang="ts"></script>
+<script setup lang="ts" generic="T extends string">
+import { defineProps, defineModel, defineEmits } from 'vue'
+import type { PropType } from 'vue'
+
+type Option<T> = {
+  text: string
+  value: T
+}
+//type ValueType = (typeof options)[number]['value'];
+type modelValueEmits<T> = {
+  'update:model-value': [modelValue: T]
+}
+
+const { options } = defineProps<{
+  options: PropType<Option<string>[]> //– Имеет ли поле невалидное состояние
+}>()
+const emit = defineEmits<modelValueEmits<T>>()
+
+const modelValue = defineModel<T>('modelValue', { required: true })
+
+// Обработчик изменения
+const handleChange = (event: Event) => {
+  const newValue = (event.target as HTMLSelectElement).value as T
+  modelValue.value = newValue // Обновляем v-model
+  emit('update:model-value', newValue) // Генерируем событие обновления
+}
+</script>
 
 <template>
-  <select class="select">
-    <option value="value-1">One</option>
-    <option value="value-2">Two</option>
+  <select class="select" @change="handleChange">
+    <option v-for="option in options" :key="option.value" :value="option.value" :selected="option.value === modelValue">
+      {{ option.text }}
+    </option>
   </select>
 </template>
 
