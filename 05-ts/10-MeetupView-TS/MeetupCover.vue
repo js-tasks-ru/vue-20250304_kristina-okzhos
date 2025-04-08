@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
-import type { PropType } from 'vue'
 
 const { image, title } = defineProps<{
-  title: PropType<string>
-  image: PropType<string>
+  title: string
+  image: string
 }>()
 const bgStyle = computed(() => (image ? { '--bg-url': `url('${image}')` } : undefined))
 </script>

@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import type { PropType } from 'vue'
 
-const { description } = defineProps<{
-  description: PropType<string>
+defineProps<{
+  description: string
 }>()
 </script>
 

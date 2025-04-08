@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import type { PropType } from 'vue'
 import type { MeetupAgendaItemDTO } from '@shgk/vue-course-ui'
 import MeetupAgendaItem from './MeetupAgendaItem.vue'
 
 const { agenda } = defineProps<{
-  agenda: PropType<MeetupAgendaItemDTO[]>
+  agenda: MeetupAgendaItemDTO[]
 }>()
 </script>
 

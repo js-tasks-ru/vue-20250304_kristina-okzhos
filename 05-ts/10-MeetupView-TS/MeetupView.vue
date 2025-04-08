@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import type { PropType } from 'vue'
 import type { MeetupDTO } from '@shgk/vue-course-ui'
 import { UiAlert, UiContainer } from '@shgk/vue-course-ui'
 import MeetupAgenda from './MeetupAgenda.vue'
@@ -8,16 +7,11 @@ import MeetupDescription from './MeetupDescription.vue'
 import MeetupCover from './MeetupCover.vue'
 import MeetupInfo from './MeetupInfo.vue'
 
-// При таком описании не проходят тесты, но работает.
-/* 
+// import type { PropType } from 'vue' - Отключила — тест прошел)
 interface MeetupProps {
-  meetup: MeetupDTO,
+  meetup: MeetupDTO
 }
-const { meetup } = defineProps<MeetupProps>() 
-*/
-const { meetup } = defineProps<{
-  meetup: PropType<MeetupDTO>
-}>()
+const { meetup } = defineProps<MeetupProps>()
 </script>
 
 <template>
