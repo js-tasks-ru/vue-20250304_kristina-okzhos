@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T extends string">
 import { defineProps, defineModel } from 'vue'
-import type { PropType } from 'vue'
 
 type Option<T> = {
   text: string
@@ -8,7 +7,7 @@ type Option<T> = {
 }
 
 const { options } = defineProps<{
-  options: PropType<Option<string>[]> //– Имеет ли поле невалидное состояние
+  options: Option<T>
 }>()
 
 const modelValue = defineModel<T>('modelValue', { required: true })

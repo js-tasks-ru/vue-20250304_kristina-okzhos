@@ -3,18 +3,18 @@ import { defineProps, defineSlots } from 'vue'
 import type { Slot } from 'vue'
 
 defineProps<{
-  for?: string,
-  label?: string,
-  description?: string,
-  hint?: string,
-  showHint?: boolean,
-  invalid?: boolean,
+  for?: string
+  label?: string
+  description?: string
+  hint?: string
+  showHint?: boolean
+  invalid?: boolean
 }>()
 
 defineSlots<{
-  default?: Slot,
-  label?: Slot,
-  description?: Slot,
+  default?: Slot
+  label?: Slot
+  description?: Slot
 }>()
 </script>
 
