@@ -10,7 +10,7 @@ const { options } = defineProps<{
   options: Option
 }>()
 
-const modelValue = defineModel<T>('modelValue', { required: true }) // убрала событие 
+const modelValue = defineModel<T>()
 </script>
 
 <template>

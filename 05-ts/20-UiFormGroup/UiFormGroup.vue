@@ -3,7 +3,7 @@ import { defineProps, defineSlots } from 'vue'
 import type { Slot } from 'vue'
 
 defineProps<{
-  for?: string
+  for?: string //убрала из useAttrs()
   label?: string
   description?: string
   hint?: string
@@ -12,8 +12,8 @@ defineProps<{
 }>()
 
 defineSlots<{
-  default?: Slot
-  label?: Slot
+  default?: Slot 
+  label?: Slot //Slot<string> убрала
   description?: Slot
 }>()
 </script>
