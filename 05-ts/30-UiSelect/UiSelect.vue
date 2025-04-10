@@ -1,9 +1,29 @@
-<script setup lang="ts"></script>
+<script setup lang="ts" generic="T extends string">
+import { defineProps, defineModel } from 'vue'
+
+type Option<T> = {
+  text: string
+  value: T
+}
+
+const { options } = defineProps<{
+  options: Option<T>
+}>()
+
+const modelValue = defineModel<T>('modelValue', { required: true })
+
+// Обработчик изменения
+const handleChange = (event: Event) => {
+  const newValue = (event.target as HTMLSelectElement).value as T
+  modelValue.value = newValue // Обновляем v-model
+}
+</script>
 
 <template>
-  <select class="select">
-    <option value="value-1">One</option>
-    <option value="value-2">Two</option>
+  <select class="select" @change="handleChange">
+    <option v-for="option in options" :key="option.value" :value="option.value" :selected="option.value === modelValue">
+      {{ option.text }}
+    </option>
   </select>
 </template>
 
