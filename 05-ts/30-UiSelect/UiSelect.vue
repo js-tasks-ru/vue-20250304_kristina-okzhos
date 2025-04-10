@@ -1,27 +1,24 @@
 <script setup lang="ts" generic="T extends string">
 import { defineProps, defineModel } from 'vue'
 
-type Option<T> = {
+type Option = {
   text: string
   value: T
 }
 
 const { options } = defineProps<{
-  options: Option<T>
+  options: Option
 }>()
 
-const modelValue = defineModel<T>('modelValue', { required: true })
-
-// Обработчик изменения
-const handleChange = (event: Event) => {
-  const newValue = (event.target as HTMLSelectElement).value as T
-  modelValue.value = newValue // Обновляем v-model
-}
+const modelValue = defineModel<T>('modelValue', { required: true }) // убрала событие 
 </script>
 
 <template>
-  <select class="select" @change="handleChange">
-    <option v-for="option in options" :key="option.value" :value="option.value" :selected="option.value === modelValue">
+  <select 
+    class="select" 
+    v-model="modelValue"
+  >
+    <option v-for="option in options" :key="option.value" :value="option.value">
       {{ option.text }}
     </option>
   </select>
