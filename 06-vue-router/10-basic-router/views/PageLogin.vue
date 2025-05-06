@@ -17,18 +17,9 @@ async function onSubmit() {
   try {
     await login(email.value, password.value)
     // Авторизация прошла успешно
-    let routerName = 'index'
-    if (from === "/foo") {
-      // route.query.from === "/foo"
-      routerName = 'foo'
-    }
-    if (from === "/bar") {
-      // route.query.from === "/bar"
-      routerName = 'bar'
-    }
 
     router.push({
-      name: routerName
+      path: from ?? '/'
     })
 
   } catch (error) {
