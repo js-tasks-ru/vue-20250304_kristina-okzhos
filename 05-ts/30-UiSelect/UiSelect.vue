@@ -14,10 +14,7 @@ const modelValue = defineModel<T>()
 </script>
 
 <template>
-  <select 
-    class="select" 
-    v-model="modelValue"
-  >
+  <select class="select" v-model="modelValue">
     <option v-for="option in options" :key="option.value" :value="option.value">
       {{ option.text }}
     </option>

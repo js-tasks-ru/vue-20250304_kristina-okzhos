@@ -12,7 +12,7 @@ defineProps<{
 }>()
 
 defineSlots<{
-  default?: Slot 
+  default?: Slot
   label?: Slot //Slot<string> убрала
   description?: Slot
 }>()
